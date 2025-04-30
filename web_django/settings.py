@@ -9,11 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'l8e(i06@oey9vl4%3m67!0-p!4k0&1$l@w*9g1eeda3+1=!835')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '.onrender.com', 
+    '.onrender.com',
+    'bahay-kapihan.onrender.com' 
 ]
 # Database configuration
 DATABASES = {
@@ -34,11 +35,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Add whitenoise middleware
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
-]
 
 # Application definition
 INSTALLED_APPS = [
@@ -52,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,14 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'web_django.wsgi.application'
-
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
