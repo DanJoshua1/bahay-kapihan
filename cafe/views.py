@@ -9,22 +9,22 @@ def home(request):
         {"name": "Americano", "price": 60, "image_url": "static/images/menu/americano.jpeg", "description": "Espresso with steamed milk and foam."},
     ]
     pastries_items = [
-        {"name": "Croissant", "price": 80, "image_url": "static/images/menu/croissant.jpg", "description": "Buttery, flaky pastry."},
-        {"name": "Bagel", "price": 90, "image_url": "static/images/menu/bagel.png", "description": "Chewy and delicious bagel."},
-        {"name": "Muffin", "price": 75, "image_url": "static/images/menu/muffins.png", "description": "Freshly baked muffin."},
-        {"name": "Scones", "price": 85, "image_url": "static/images/menu/chocolate-cake.jpg", "description": "Delicious scones with clotted cream."},
+        {"name": "Croissant", "price": 80, "image_url": "static/cafe/images/menu/croissant.jpg", "description": "Buttery, flaky pastry."},
+        {"name": "Bagel", "price": 90, "image_url": "static/cafe/images/menu/bagel.png", "description": "Chewy and delicious bagel."},
+        {"name": "Muffin", "price": 75, "image_url": "static/cafe/images/menu/muffins.png", "description": "Freshly baked muffin."},
+        {"name": "Scones", "price": 85, "image_url": "static/cafe/images/menu/chocolate-cake.jpg", "description": "Delicious scones with clotted cream."},
     ]
     desserts_items = [
-        {"name": "Cheesecake", "price": 150, "image_url": "static/images/menu/cheesecake.png", "description": "Creamy New York style cheesecake."},
-        {"name": "Tiramisu", "price": 160, "image_url": "static/images/menu/tiramisu.jpg", "description": "Classic Italian coffee-flavored dessert."},
-        {"name": "Chocolate Cake", "price": 140, "image_url": "static/images/menu/chocolate-cake.jpg", "description": "Rich and moist chocolate cake."},
-        {"name": "Brownie", "price": 120, "image_url": "static/images/menu/brownie.png", "description": "Fudgy brownie with a crispy top."},
+        {"name": "Cheesecake", "price": 150, "image_url": "static/cafe/images/menu/cheesecake.png", "description": "Creamy New York style cheesecake."},
+        {"name": "Tiramisu", "price": 160, "image_url": "static/cafe/images/menu/tiramisu.jpg", "description": "Classic Italian coffee-flavored dessert."},
+        {"name": "Chocolate Cake", "price": 140, "image_url": "static/cafe/images/menu/chocolate-cake.jpg", "description": "Rich and moist chocolate cake."},
+        {"name": "Brownie", "price": 120, "image_url": "static/cafe/images/menu/brownie.png", "description": "Fudgy brownie with a crispy top."},
     ]
     specials_items = [
-        {"name": "Seasonal Latte", "price": 140, "image_url": "static/images/menu/seasonal-latte.jpg", "description": "Our special seasonal latte with unique flavors."},
-        {"name": "Breakfast Set", "price": 220, "image_url": "static/images/menu/breakfast-combo.png", "description": "Coffee of your choice with any pastry."},
-        {"name": "Dessert Combo", "price": 300, "image_url": "static/images/menu/dessert-combo.jpg", "description": "Choose any two desserts and a coffee."},
-        {"name": "Happy Hour", "price": 180, "image_url": "static/images/menu/happy-hour.jpeg", "description": "Buy one get one free on selected drinks."},
+        {"name": "Seasonal Latte", "price": 140, "image_url": "static/cafe/images/menu/seasonal-latte.jpg", "description": "Our special seasonal latte with unique flavors."},
+        {"name": "Breakfast Set", "price": 220, "image_url": "static/cafe/images/menu/breakfast-combo.png", "description": "Coffee of your choice with any pastry."},
+        {"name": "Dessert Combo", "price": 300, "image_url": "static/cafe/images/menu/dessert-combo.jpg", "description": "Choose any two desserts and a coffee."},
+        {"name": "Happy Hour", "price": 180, "image_url": "static/cafe/images/menu/happy-hour.jpeg", "description": "Buy one get one free on selected drinks."},
     ]
 
     context = {
