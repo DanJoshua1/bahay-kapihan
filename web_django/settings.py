@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'l8e(i06@oey9vl4%3m67!0-p!4k0&1$l@w*9g1eeda3+1=!835')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
