@@ -156,10 +156,29 @@ a:hover {
     object-fit: cover;
 }
 
-.auto-carousel .slide1 { animation: carouselAutoSlide 20s infinite; }
-.auto-carousel .slide2 { animation: carouselAutoSlide 20s infinite 5s; }
-.auto-carousel .slide3 { animation: carouselAutoSlide 20s infinite 10s; }
-.auto-carousel .slide4 { animation: carouselAutoSlide 20s infinite 15s; }
+.auto-carousel .slide1 { 
+    animation: carouselAutoSlide 20s infinite;
+    animation-play-state: running;
+}
+.auto-carousel .slide2 { 
+    animation: carouselAutoSlide 20s infinite 5s;
+    animation-play-state: running;
+}
+.auto-carousel .slide3 { 
+    animation: carouselAutoSlide 20s infinite 10s;
+    animation-play-state: running;
+}
+.auto-carousel .slide4 { 
+    animation: carouselAutoSlide 20s infinite 15s;
+    animation-play-state: running;
+}
+
+#carousel1:checked ~ .carousel-slides .auto-carousel .slide1,
+#carousel2:checked ~ .carousel-slides .auto-carousel .slide2,
+#carousel3:checked ~ .carousel-slides .auto-carousel .slide3,
+#carousel4:checked ~ .carousel-slides .auto-carousel .slide4 {
+    animation-play-state: paused;
+}
 
 #carousel1:checked ~ .carousel-slides .slide1,
 #carousel2:checked ~ .carousel-slides .slide2,
@@ -423,7 +442,12 @@ footer {
 }
 
 @keyframes carouselAutoSlide {
-    0%, 20% { opacity: 1; }
-    25%, 95% { opacity: 0; }
-    100% { opacity: 1; }
+    0%, 22% { 
+        opacity: 1;
+        z-index: 2;
+    }
+    23%, 100% { 
+        opacity: 0;
+        z-index: 1;
+    }
 }

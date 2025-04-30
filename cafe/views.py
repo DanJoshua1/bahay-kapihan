@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 def home(request):
-    # Example menu items
+    # data structure for menu items
     coffee_items = [
         {"name": "Espresso", "price": 90, "image_url": "static/images/menu/espresso.jpg", "description": "Rich and full-bodied espresso shot."},
         {"name": "Cappuccino", "price": 120, "image_url": "static/images/menu/cappuccino.png", "description": "Espresso with steamed milk and foam."},
@@ -10,15 +10,21 @@ def home(request):
     ]
     pastries_items = [
         {"name": "Croissant", "price": 80, "image_url": "static/images/croissant.jpg", "description": "Buttery, flaky pastry."},
-        {"name": "Chocolate Muffin", "price": 75, "image_url": "static/images/chocolate-muffin.jpg", "description": "Rich chocolate muffin with chocolate chips."},
+        {"name": "Bagel", "price": 90, "image_url": "static/images/bagel.png", "description": "Chewy and delicious bagel."},
+        {"name": "Muffin", "price": 75, "image_url": "static/images/muffins.png", "description": "Freshly baked muffin."},
+        {"name": "Scones", "price": 85, "image_url": "static/images/chocolate-muffin.jpg", "description": "Delicious scones with clotted cream."},
     ]
     desserts_items = [
-        {"name": "Cheesecake", "price": 150, "image_url": "static/images/cheesecake.jpg", "description": "Creamy New York style cheesecake."},
+        {"name": "Cheesecake", "price": 150, "image_url": "static/images/cheesecake.png", "description": "Creamy New York style cheesecake."},
         {"name": "Tiramisu", "price": 160, "image_url": "static/images/tiramisu.jpg", "description": "Classic Italian coffee-flavored dessert."},
+        {"name": "Chocolate Cake", "price": 140, "image_url": "static/images/chocolate-cake.jpg", "description": "Rich and moist chocolate cake."},
+        {"name": "Brownie", "price": 120, "image_url": "static/images/brownie.png", "description": "Fudgy brownie with a crispy top."},
     ]
     specials_items = [
-        {"name": "Seasonal Latte", "price": 140, "image_url": "static/images/special-latte.jpg", "description": "Our special seasonal latte with unique flavors."},
-        {"name": "Breakfast Set", "price": 220, "image_url": "static/images/breakfast-set.jpg", "description": "Coffee of your choice with any pastry."},
+        {"name": "Seasonal Latte", "price": 140, "image_url": "static/images/seasonal-latte.jpg", "description": "Our special seasonal latte with unique flavors."},
+        {"name": "Breakfast Set", "price": 220, "image_url": "static/images/breakfast-combo.png", "description": "Coffee of your choice with any pastry."},
+        {"name": "Dessert Combo", "price": 300, "image_url": "static/images/dessert-combo.jpg", "description": "Choose any two desserts and a coffee."},
+        {"name": "Happy Hour", "price": 180, "image_url": "static/images/happy-hour.jpeg", "description": "Buy one get one free on selected drinks."},
     ]
 
     context = {
