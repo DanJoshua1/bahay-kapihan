@@ -4,13 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     
     function showSlide(index) {
-        // Hide all slides
-        slides.forEach(slide => {
-            slide.style.opacity = '0';
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === index ? '1' : '0';
         });
-        
-        // Show current slide
-        slides[index].style.opacity = '1';
         radios[index].checked = true;
     }
 
