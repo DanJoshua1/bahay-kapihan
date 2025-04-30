@@ -134,22 +134,21 @@ a:hover {
     background: #ffe0b2;
     color: #4e342e;
 }
-/* Carousel Container and Content */
 .carousel-container {
     position: relative;
     width: 100%;
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff; 
 }
 
 .carousel-content {
     position: relative;
     width: 100%;
-    padding-bottom: 66.67%; /* 3:2 Aspect ratio */
+    padding-bottom: 66.67%; 
 }
 
-/* Slides Container */
 .carousel-slides {
     position: absolute;
     top: 0;
@@ -158,7 +157,6 @@ a:hover {
     height: 100%;
 }
 
-/* Individual Slides */
 .carousel-slide {
     position: absolute;
     top: 0;
@@ -166,7 +164,8 @@ a:hover {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
 .carousel-slide img {
@@ -176,15 +175,15 @@ a:hover {
     border-radius: 1rem;
 }
 
-/* Show active slide */
+.carousel-slide.active,
 #carousel1:checked ~ .carousel-slides #slide1,
 #carousel2:checked ~ .carousel-slides #slide2,
 #carousel3:checked ~ .carousel-slides #slide3,
 #carousel4:checked ~ .carousel-slides #slide4 {
     opacity: 1;
+    visibility: visible;
 }
 
-/* Navigation Dots */
 .carousel-radio-dots {
     position: absolute;
     bottom: 20px;
@@ -195,7 +194,7 @@ a:hover {
     z-index: 3;
 }
 
-.carousel-radio-dots .dot {
+.dot {
     width: 12px;
     height: 12px;
     background: rgba(255, 255, 255, 0.5);
@@ -204,7 +203,6 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-/* Active dot styling */
 #carousel1:checked ~ .carousel-radio-dots label:nth-child(1) .dot,
 #carousel2:checked ~ .carousel-radio-dots label:nth-child(2) .dot,
 #carousel3:checked ~ .carousel-radio-dots label:nth-child(3) .dot,
@@ -212,7 +210,6 @@ a:hover {
     background: #fff;
     transform: scale(1.2);
 }
-
 .card {
     border-radius: 1rem;
 }
