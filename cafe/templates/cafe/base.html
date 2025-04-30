@@ -63,25 +63,6 @@
     <script src="{% static 'cafe/menu.js' %}"></script>
     <script src="{% static 'cafe/modal.js' %}"></script>
     <script src="{% static 'cafe/carousel.js' %}"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
-    <script>
-        function initMap() {
-            // Replace these coordinates with your cafe's actual location
-            const cafeLocation = { lat: 14.7565, lng: 121.0583 }; // Example coordinates for Caloocan
-            
-            const map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: cafeLocation,
-            });
-            
-            const marker = new google.maps.Marker({
-                position: cafeLocation,
-                map: map,
-                title: 'Bahay Kapihan'
-            });
-        }
-        </script>
+
 </body>
 </html>

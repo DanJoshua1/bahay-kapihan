@@ -1,49 +1,59 @@
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.carousel-slide');
-    const radios = document.querySelectorAll('input[name="carousel"]');
-    let currentIndex = 0;
-    
-    // Debug log to check if elements are found
-    console.log('Found slides:', slides.length);
-    console.log('Found radios:', radios.length);
+    const dots = document.querySelectorAll('.carousel-radio-dots label');
+    let currentSlide = 0;
+    let isPlaying = true;
+    let slideInterval = null;
+    const intervalTime = 5000;
 
     function showSlide(index) {
-        // Hide all slides
+        // Remove active class from all slides
         slides.forEach(slide => {
-            slide.style.opacity = '0';
-            slide.style.visibility = 'hidden';
             slide.classList.remove('active');
+            slide.style.opacity = '0';
         });
-        
-        // Show current slide
-        slides[index].style.opacity = '1';
-        slides[index].style.visibility = 'visible';
-        slides[index].classList.add('active');
-        radios[index].checked = true;
 
-        // Debug log
-        console.log('Showing slide:', index);
+        // Add active class to current slide
+        slides[index].classList.add('active');
+        slides[index].style.opacity = '1';
+
+        // Update radio buttons
+        document.getElementById(`carousel${index + 1}`).checked = true;
     }
 
-    // Auto-advance carousel
-    const intervalId = setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
-    }, 5000);
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
 
-    // Handle manual navigation
-    radios.forEach((radio, index) => {
-        radio.addEventListener('change', () => {
-            currentIndex = index;
-            showSlide(currentIndex);
+    function startSlideshow() {
+        if (slideInterval === null) {
+            slideInterval = setInterval(nextSlide, intervalTime);
+        }
+    }
+
+    function pauseSlideshow() {
+        clearInterval(slideInterval);
+        slideInterval = null;
+    }
+
+    // Add click handlers to radio buttons
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            pauseSlideshow();
+            currentSlide = index;
+            showSlide(currentSlide);
+            // Resume slideshow after 10 seconds of inactivity
+            setTimeout(startSlideshow, 10000);
         });
     });
 
-    // Show first slide initially
-    showSlide(0);
+    // Handle mouse interactions
+    const carouselContainer = document.querySelector('.carousel-slides');
+    carouselContainer.addEventListener('mouseenter', pauseSlideshow);
+    carouselContainer.addEventListener('mouseleave', startSlideshow);
 
-    // Cleanup on page unload
-    window.addEventListener('unload', () => {
-        clearInterval(intervalId);
-    });
+    // Start the slideshow
+    showSlide(currentSlide);
+    startSlideshow();
 });
