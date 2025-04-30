@@ -5,8 +5,8 @@ def home(request):
     coffee_items = [
         {"name": "Espresso", "price": 90, "image_url": "static/images/menu/espresso.jpg", "description": "Rich and full-bodied espresso shot."},
         {"name": "Cappuccino", "price": 120, "image_url": "static/images/menu/cappuccino.png", "description": "Espresso with steamed milk and foam."},
-        {"name": "Iced Spanish Latte", "price": 120, "image_url": "static/images/menu/Iced-Spanish-Latte.png", "description": "Espresso with steamed milk and foam."},
-        {"name": "Americano", "price": 60, "image_url": "static/images/menu/americano.jpeg", "description": "Espresso with steamed milk and foam."},
+        {"name": "Iced Spanish Latte", "price": 120, "image_url": "static/images/menu/Iced-Spanish-Latte.png", "description": "Iced coffee with condensed milk."},
+        {"name": "Americano", "price": 60, "image_url": "static/images/menu/americano.jpeg", "description": "Espresso with hot water."},
     ]
     pastries_items = [
         {"name": "Croissant", "price": 80, "image_url": "static/cafe/images/menu/croissant.jpg", "description": "Buttery, flaky pastry."},
