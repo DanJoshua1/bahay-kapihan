@@ -1,24 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-radio-dots label');
+    const radios = document.querySelectorAll('input[name="carousel"]');
     let currentSlide = 0;
-    let isPlaying = true;
-    let slideInterval = null;
-    const intervalTime = 5000;
+    let intervalId = null;
+    const INTERVAL_TIME = 5000;
 
     function showSlide(index) {
-        // Remove active class from all slides
-        slides.forEach(slide => {
-            slide.classList.remove('active');
-            slide.style.opacity = '0';
-        });
-
-        // Add active class to current slide
-        slides[index].classList.add('active');
+        slides.forEach(slide => slide.style.opacity = '0');
         slides[index].style.opacity = '1';
-
-        // Update radio buttons
-        document.getElementById(`carousel${index + 1}`).checked = true;
+        radios[index].checked = true;
     }
 
     function nextSlide() {
@@ -26,34 +16,35 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlide);
     }
 
-    function startSlideshow() {
-        if (slideInterval === null) {
-            slideInterval = setInterval(nextSlide, intervalTime);
+    function startAutoplay() {
+        if (!intervalId) {
+            intervalId = setInterval(nextSlide, INTERVAL_TIME);
         }
     }
 
-    function pauseSlideshow() {
-        clearInterval(slideInterval);
-        slideInterval = null;
+    function stopAutoplay() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
     }
 
-    // Add click handlers to radio buttons
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            pauseSlideshow();
+    // Handle radio button clicks
+    radios.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
             currentSlide = index;
             showSlide(currentSlide);
-            // Resume slideshow after 10 seconds of inactivity
-            setTimeout(startSlideshow, 10000);
+            stopAutoplay();
+            setTimeout(startAutoplay, INTERVAL_TIME);
         });
     });
 
     // Handle mouse interactions
-    const carouselContainer = document.querySelector('.carousel-slides');
-    carouselContainer.addEventListener('mouseenter', pauseSlideshow);
-    carouselContainer.addEventListener('mouseleave', startSlideshow);
+    const container = document.querySelector('.carousel-container');
+    container.addEventListener('mouseenter', stopAutoplay);
+    container.addEventListener('mouseleave', startAutoplay);
 
-    // Start the slideshow
+    // Initialize carousel
     showSlide(currentSlide);
-    startSlideshow();
+    startAutoplay();
 });
