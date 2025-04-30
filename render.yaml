@@ -2,19 +2,20 @@ services:
   - type: web
     name: bahay-kapihan
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn web_django.wsgi:application
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn web_django.wsgi:application"
     envVars:
-      - key: DJANGO_SECRET_KEY
-        generateValue: true
       - key: PYTHON_VERSION
         value: 3.11.11
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
       - key: DATABASE_URL
         fromDatabase:
           name: bahay-kapihan-db
           property: connectionString
+      - key: RENDER
+        value: true
 
 databases:
   - name: bahay-kapihan-db
     databaseName: bahay_kapihan
-    user: bahay_kapihan
