@@ -29,15 +29,31 @@
     </main>
 
     <footer class="text-center py-4">
-       
         <div class="container">
-            <div class="mb-2">
-                <a class="navbar-brand" href=""> <img src="{% static 'images/assets/round-icon.png' %}" alt="Bahay Kapihan" width="40" class="me-2" style="border-radius: 50%;"></a>
-                <a href="https://www.facebook.com/profile.php?id=61569862791555" target="_blank" class="social-btn"><i class="bi bi-facebook"></i> Facebook</a>
-                <a href="https://www.instagram.com/bahaykapihanofficial/" target="_blank" class="social-btn"><i class="bi bi-instagram"></i> Instagram</a>
-            </div>
-            <div>
-                <span>© {% now "Y" %} Bahay Kapihan. All rights reserved.</span>
+            <div class="row justify-content-center">
+                <div class="col-12 mb-3">
+                    <a class="navbar-brand d-inline-block mb-2" href="">
+                        <img src="{% static 'images/assets/round-icon.png' %}" alt="Bahay Kapihan" 
+                             width="40" class="me-2" style="border-radius: 50%;">
+                    </a>
+                </div>
+                <div class="col-12 mb-3">
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="https://www.facebook.com/profile.php?id=61569862791555" 
+                           target="_blank" 
+                           class="social-btn">
+                            <i class="bi bi-facebook"></i> Facebook
+                        </a>
+                        <a href="https://www.instagram.com/bahaykapihanofficial/" 
+                           target="_blank" 
+                           class="social-btn">
+                            <i class="bi bi-instagram"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <span class="small">© {% now "Y" %} Bahay Kapihan. All rights reserved.</span>
+                </div>
             </div>
         </div>
     </footer>

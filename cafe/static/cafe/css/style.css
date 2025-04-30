@@ -139,6 +139,7 @@ a:hover {
     width: 100%;
     height: 550px;
     padding-bottom: 66.66%; /* 3:2 aspect ratio */
+    overflow: hidden;
 }
 .carousel-slide {
     position: absolute;
@@ -155,38 +156,29 @@ a:hover {
     height: 100%;
     object-fit: cover;
 }
-
-.auto-carousel .slide1 { 
-    animation: carouselAutoSlide 20s infinite;
-    animation-play-state: running;
-}
-.auto-carousel .slide2 { 
-    animation: carouselAutoSlide 20s infinite 5s;
-    animation-play-state: running;
-}
-.auto-carousel .slide3 { 
-    animation: carouselAutoSlide 20s infinite 10s;
-    animation-play-state: running;
-}
-.auto-carousel .slide4 { 
-    animation: carouselAutoSlide 20s infinite 15s;
-    animation-play-state: running;
-}
-
-#carousel1:checked ~ .carousel-slides .auto-carousel .slide1,
-#carousel2:checked ~ .carousel-slides .auto-carousel .slide2,
-#carousel3:checked ~ .carousel-slides .auto-carousel .slide3,
-#carousel4:checked ~ .carousel-slides .auto-carousel .slide4 {
-    animation-play-state: paused;
-}
-
-#carousel1:checked ~ .carousel-slides .slide1,
-#carousel2:checked ~ .carousel-slides .slide2,
-#carousel3:checked ~ .carousel-slides .slide3,
-#carousel4:checked ~ .carousel-slides .slide4 {
+/* Active slide */
+.carousel-slide.active {
     opacity: 1;
-    pointer-events: auto;
     z-index: 2;
+}
+
+/* Radio dots styling */
+.carousel-radio-dots {
+    position: relative;
+    z-index: 3;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+input[type="radio"]:checked + .carousel-radio-dots label .dot {
+    background-color: #333;
 }
 .carousel-radio-dots .dot {
     display: inline-block;
@@ -392,10 +384,41 @@ h2::after {
 
 /* Footer */
 footer {
-    background: #6d4c41;
-    color: #ffffff;
-    font-family: 'Cormorant Garamond', serif;
-    padding: 20px 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    margin-top: auto;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: #e9ecef;
+    color: #212529;
+    transform: translateY(-2px);
+}
+
+.social-btn i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 576px) {
+    footer {
+        padding: 2rem 1rem;
+    }
+    
+    .social-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
 }
 
 /* Keyframes for Animations */

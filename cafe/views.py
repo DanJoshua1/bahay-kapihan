@@ -12,7 +12,7 @@ def home(request):
         {"name": "Croissant", "price": 80, "image_url": "static/images/menu/croissant.jpg", "description": "Buttery, flaky pastry."},
         {"name": "Bagel", "price": 90, "image_url": "static/images/menu/bagel.png", "description": "Chewy and delicious bagel."},
         {"name": "Muffin", "price": 75, "image_url": "static/images/menu/muffins.png", "description": "Freshly baked muffin."},
-        {"name": "Scones", "price": 85, "image_url": "static/images/menu/chocolate-muffin.jpg", "description": "Delicious scones with clotted cream."},
+        {"name": "Scones", "price": 85, "image_url": "static/images/menu/chocolate-cake.jpg", "description": "Delicious scones with clotted cream."},
     ]
     desserts_items = [
         {"name": "Cheesecake", "price": 150, "image_url": "static/images/menu/cheesecake.png", "description": "Creamy New York style cheesecake."},
