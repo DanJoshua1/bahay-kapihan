@@ -1,83 +1,89 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.carousel-slide');
     const radios = document.querySelectorAll('input[name="carousel"]');
     const container = document.querySelector('.carousel-slides');
-    let currentIndex = 0;
-    let startX = 0;
-    let isDragging = false;
+    let currentSlide = 0;
+    let autoplayInterval;
     const INTERVAL = 5000;
-    let intervalId;
 
-    function updateSlidePosition() {
-        container.style.transform = `translateX(-${currentIndex * 100}%)`;
-        radios[currentIndex].checked = true;
+    // Initialize first slide
+    slides[0].classList.add('active');
+
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active', 'previous');
+        });
+
+        // Get previous slide index
+        const previousSlide = currentSlide;
+        currentSlide = index;
+
+        // Add classes to slides
+        slides[previousSlide].classList.add('previous');
+        slides[currentSlide].classList.add('active');
+
+        // Update radio buttons
+        radios[currentSlide].checked = true;
     }
 
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlidePosition();
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
     }
 
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlidePosition();
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
     }
 
     function startAutoplay() {
-        intervalId = setInterval(nextSlide, INTERVAL);
+        stopAutoplay(); // Clear any existing interval
+        autoplayInterval = setInterval(nextSlide, INTERVAL);
     }
 
     function stopAutoplay() {
-        clearInterval(intervalId);
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+        }
     }
 
-    // Handle swipe
-    container.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-        stopAutoplay();
-    });
-
-    container.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const currentX = e.touches[0].clientX;
-        const diffX = currentX - startX;
-
-        // Optional: Add drag effect
-        container.style.transform = `translateX(calc(-${currentIndex * 100}% + ${diffX}px))`;
-    });
-
-    container.addEventListener('touchend', (e) => {
-        isDragging = false;
-        const endX = e.changedTouches[0].clientX;
-        const diffX = endX - startX;
-
-        if (diffX > 50) {
-            prevSlide();
-        } else if (diffX < -50) {
-            nextSlide();
-        } else {
-            updateSlidePosition(); // snap back
-        }
-
-        startAutoplay();
-    });
-
-    // Manual radio control
+    // Handle radio button clicks
     radios.forEach((radio, index) => {
         radio.addEventListener('change', () => {
-            currentIndex = index;
-            updateSlidePosition();
+            showSlide(index);
             stopAutoplay();
             startAutoplay();
         });
     });
 
-    // Pause autoplay on hover
-    document.querySelector('.carousel-container').addEventListener('mouseenter', stopAutoplay);
-    document.querySelector('.carousel-container').addEventListener('mouseleave', startAutoplay);
+    // Handle hover pause
+    container.addEventListener('mouseenter', stopAutoplay);
+    container.addEventListener('mouseleave', startAutoplay);
 
-    // Initialize
-    updateSlidePosition();
+    // Handle touch events
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopAutoplay();
+    });
+
+    container.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        const difference = touchEndX - touchStartX;
+
+        if (Math.abs(difference) > 50) { // Minimum swipe distance
+            if (difference > 0) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        }
+        startAutoplay();
+    });
+
+    // Start autoplay
     startAutoplay();
 });
