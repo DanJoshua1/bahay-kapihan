@@ -134,12 +134,30 @@ a:hover {
     background: #ffe0b2;
     color: #4e342e;
 }
-.carousel-slides {
+.carousel-container {
     position: relative;
     width: 100%;
-    height: 550px;
-    padding-bottom: 66.66%; /* 3:2 aspect ratio */
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
+.carousel-content {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.67%; /* 3:2 Aspect ratio */
+}
+
+.carousel-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .carousel-slide {
     position: absolute;
     top: 0;
@@ -149,34 +167,32 @@ a:hover {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
-.carousel-slides img{
+
+.carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-/* Active slide */
-.carousel-slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
-/* Radio dots styling */
-.carousel-radio-dots {
-    position: relative;
-    z-index: 3;
+    border-radius: 1rem;
 }
 
 .dot {
     width: 12px;
     height: 12px;
-    background-color: #ddd;
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-input[type="radio"]:checked + .carousel-radio-dots label .dot {
-    background-color: #333;
+
+.carousel-radio-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
 }
 .carousel-radio-dots .dot {
     display: inline-block;
@@ -186,22 +202,18 @@ input[type="radio"]:checked + .carousel-radio-dots label .dot {
     background: #bbb;
     transition: background 0.3s;
 }
-#carousel1:checked ~ .carousel-radio-dots label[for="carousel1"] .dot,
-#carousel2:checked ~ .carousel-radio-dots label[for="carousel2"] .dot,
-#carousel3:checked ~ .carousel-radio-dots label[for="carousel3"] .dot,
-#carousel4:checked ~ .carousel-radio-dots label[for="carousel4"] .dot {
-    background: #333;
+#carousel1:checked ~ .carousel-slides #slide1,
+#carousel2:checked ~ .carousel-slides #slide2,
+#carousel3:checked ~ .carousel-slides #slide3,
+#carousel4:checked ~ .carousel-slides #slide4 {
+    opacity: 1;
 }
-.btn-outline-dark {
-    border-color: #6d4c41;
-    color: #6d4c41;
-    font-family: 'Cormorant Garamond', serif;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-outline-dark:hover {
-    background-color: #6d4c41;
-    color: #ffffff;
+#carousel1:checked ~ .carousel-radio-dots label:nth-child(1) .dot,
+#carousel2:checked ~ .carousel-radio-dots label:nth-child(2) .dot,
+#carousel3:checked ~ .carousel-radio-dots label:nth-child(3) .dot,
+#carousel4:checked ~ .carousel-radio-dots label:nth-child(4) .dot {
+    background: #fff;
+    transform: scale(1.2);
 }
 .card {
     border-radius: 1rem;
@@ -407,7 +419,20 @@ footer {
     margin-right: 0.5rem;
     font-size: 1.1rem;
 }
-
+@media (max-width: 768px) {
+    .carousel-container {
+        border-radius: 0.5rem;
+    }
+    
+    .carousel-radio-dots {
+        bottom: 10px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
 @media (max-width: 576px) {
     footer {
         padding: 2rem 1rem;
@@ -418,8 +443,6 @@ footer {
         font-size: 0.9rem;
     }
 }
-
-/* Keyframes for Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

@@ -141,34 +141,36 @@
             </div>
             <div class="col-lg-6">
                 <div class="carousel-container">
-                    <!-- Radio buttons -->
-                    <input type="radio" name="carousel" id="carousel1" checked hidden>
-                    <input type="radio" name="carousel" id="carousel2" hidden>
-                    <input type="radio" name="carousel" id="carousel3" hidden>
-                    <input type="radio" name="carousel" id="carousel4" hidden>
-                
-                    <!-- Slides -->
-                    <div class="carousel-slides">
-                        <div class="carousel-slide">
-                            <img src="{% static 'images/interior/item1.jpg' %}" alt="Cafe Interior 1">
+                    <div class="carousel-content">
+                        <!-- Radio buttons -->
+                        <input type="radio" name="carousel" id="carousel1" checked hidden>
+                        <input type="radio" name="carousel" id="carousel2" hidden>
+                        <input type="radio" name="carousel" id="carousel3" hidden>
+                        <input type="radio" name="carousel" id="carousel4" hidden>
+                    
+                        <!-- Slides -->
+                        <div class="carousel-slides">
+                            <div class="carousel-slide" id="slide1">
+                                <img src="{% static 'cafe/images/interior/item1.jpg' %}" alt="Cafe Interior 1">
+                            </div>
+                            <div class="carousel-slide" id="slide2">
+                                <img src="{% static 'cafe/images/interior/item2.jpg' %}" alt="Cafe Interior 2">
+                            </div>
+                            <div class="carousel-slide" id="slide3">
+                                <img src="{% static 'cafe/images/interior/item3.jpg' %}" alt="Cafe Interior 3">
+                            </div>
+                            <div class="carousel-slide" id="slide4">
+                                <img src="{% static 'cafe/images/interior/item4.jpg' %}" alt="Cafe Interior 4">
+                            </div>
                         </div>
-                        <div class="carousel-slide">
-                            <img src="{% static 'images/interior/item2.jpg' %}" alt="Cafe Interior 2">
+                    
+                        <!-- Navigation dots -->
+                        <div class="carousel-radio-dots">
+                            <label for="carousel1"><span class="dot"></span></label>
+                            <label for="carousel2"><span class="dot"></span></label>
+                            <label for="carousel3"><span class="dot"></span></label>
+                            <label for="carousel4"><span class="dot"></span></label>
                         </div>
-                        <div class="carousel-slide">
-                            <img src="{% static 'images/interior/item3.jpg' %}" alt="Cafe Interior 3">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="{% static 'images/interior/item4.jpg' %}" alt="Cafe Interior 4">
-                        </div>
-                    </div>
-                
-                    <!-- Navigation dots -->
-                    <div class="carousel-radio-dots">
-                        <label for="carousel1"><span class="dot"></span></label>
-                        <label for="carousel2"><span class="dot"></span></label>
-                        <label for="carousel3"><span class="dot"></span></label>
-                        <label for="carousel4"><span class="dot"></span></label>
                     </div>
                 </div>
             </div>
