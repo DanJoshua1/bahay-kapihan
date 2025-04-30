@@ -138,31 +138,31 @@ a:hover {
     position: relative;
     width: 100%;
     overflow: hidden;
+    height: 550px;
 }
 .carousel-slides {
     position: relative;
-    width: 100%;
-    height: 550px;
+    width: 400%;
 }
 .carousel-slide {
-    position: absolute;
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;    
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    transition: opacity 0.5s;
-    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 .carousel-slides img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 /* Active slide */
 .carousel-slide.active {
     opacity: 1;
-    z-index: 100;
+    z-index: 2;
 }
 
 /* Radio dots styling */
@@ -290,10 +290,6 @@ footer {
 }
 
 /* Carousel Animations */
-.carousel-slide {
-    animation: fadeIn 1.5s ease-in-out;
-}
-
 .carousel-radio-dots .dot {
     background: #ffe0b2; 
     transition: transform 0.3s, background 0.3s;
