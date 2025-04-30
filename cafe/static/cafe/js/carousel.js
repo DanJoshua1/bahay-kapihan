@@ -6,8 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const INTERVAL_TIME = 5000;
 
     function showSlide(index) {
-        slides.forEach(slide => slide.style.opacity = '0');
-        slides[index].style.opacity = '1';
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.style.opacity = '0';
+            slide.style.visibility = 'hidden';
+        });
+        
+        // Show selected slide
+        slides[index].style.visibility = 'visible';
+        // Small delay to ensure visibility is applied before opacity
+        setTimeout(() => {
+            slides[index].style.opacity = '1';
+        }, 50);
+        
         radios[index].checked = true;
     }
 
