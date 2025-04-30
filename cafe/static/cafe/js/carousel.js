@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.carousel-slide');
+    const slides = document.querySelectorAll('.carousel-slide img');
     const radios = document.querySelectorAll('input[name="carousel"]');
     let currentIndex = 0;
     
